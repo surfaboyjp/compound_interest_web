@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style/index.css">
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css"
+        type="text/css" media="all" />
+
+    <!-- <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+        .basic-font {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+        }
+    </style> -->
+
+<style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+    .basic-font {
+        font-family: 'Kosugi Maru', sans-serif;
+        font-weight: 400;
+    }
+    
+    .t-font {
+        font-family: 'Kosugi Maru', sans-serif;
+    }
+</style>
+
+    <title>Cumulative Impact of Fee</title>
+</head>
+
+<body>
+    <header class="container-fluid basic-font fixed-top headerColor-default">
+        <div class="navbar navbar-expand-lg navbar-dark py-1">
+            <a class="navbar-brand mx-1" href="https://django-blog1976.herokuapp.com/">
+                <h3 class="s-font">複利の魔法</h3>
+            </a>
+
+            <i class="fas fa-chart-line white-text fa-2x"></i>
+            
+            <button class="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse mx-5" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active mx-3" href="https://django-blog1976.herokuapp.com/">
+                            <h4 class="t-font">伝えたいこと</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- jQuery 読み込み -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    
+    <!-- Chart.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    
+    <!-- Chartjs plugin labels -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script> -->
+
+    <!-- オリジナルJavaScript -->
+    <script type="text/javascript" src="./js/impact_of_fee.js"></script>
+
+    <p class="page-top"><i class="fas faa-wrench animated-hover fa-chevron-circle-up fa-3x"></i></p>
+    <script>
+        $('a[href^="#"]' + 'a:not(".carousel-control-prev,.carousel-control-next,.tab-nav,.nav-link")').click(function () {
+            var speed = 500;
+            var href = $(this).attr("href");
+            var target = $(href == "#" || href == "" ? 'html' : href);
+            var position = target.offset().top - 30;
+            $("html, body").animate({ scrollTop: position }, speed, "swing");
+            return false;
+        });
+    </script>
+    <!-- トップへ戻るボタン -->
+    <script>
+        $(function () {
+            var topBtn = $('.page-top');
+            topBtn.hide();
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    topBtn.fadeIn();
+                } else {
+                    topBtn.fadeOut();
+                }
+            });
+            topBtn.click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+</html>

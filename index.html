@@ -1,0 +1,2314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Logo  -->
+    <link rel="shortcut icon" href="./data/logo.jpg">
+    <link rel="apple-touch-icon" href="./data/logo.jpg">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+
+    
+
+    
+
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css"
+        type="text/css" media="all" />
+
+    <!-- <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+        .basic-font {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+        }
+    </style> -->
+    <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+
+
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Noto+Sans+JP:wght@500&display=swap');
+        .large-font {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+
+
+
+        .basic-font {
+            font-family: 'Kosugi Maru', sans-serif;
+            font-weight: 400;
+        }
+        
+        .t-font {
+            font-family: 'Kosugi Maru', sans-serif;
+        }
+        .main-font {
+            font-family: 'Kosugi Maru', sans-serif;
+        }
+        .s-font {
+            font-family: 'Kosugi Maru', sans-serif;
+        }
+        
+    </style>
+
+    <title>Cumulative Impact of Fee</title>
+</head>
+
+<body>
+    <header class="container-fluid large-font fixed-top         headerColor-default">
+        <div class="navbar navbar-expand-lg navbar-dark py-1">
+            <a class="navbar-brand mx-1" href="https://django-blog1976.herokuapp.com/">
+                <font color="#1CB393">複利のまほう</font><i class="fas fa-chart-line text fa-1x"></i>
+                    
+            </a>
+                
+        
+            <button class="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse mx-5" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="li-ic" href="https://www.youtube.com/watch?v=K4lwJ5aQGlI&list=PLiDpcapiQirIh7SawB0YpcvFlZaVjCpBi">
+                            <font class="t-font">ツール紹介 </font>
+                            <i class="fab fa-youtube fa-lg green-text 5x youtube-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- youtubeむき出し -->
+            <!-- <iframe id="player" type="text/html" width="300" height="180" src=" https://www.youtube.com/embed?listType=playlist&list=PLiDpcapiQirIh7SawB0YpcvFlZaVjCpBi" frameborder="0">
+            </iframe> -->
+            <i class="fas fa-flag-usa fa-1x" style="color: red;" onclick="shiftEn()"></i>
+            &nbsp;
+            &nbsp;
+            <i class="fas fa-fan fa-1x" style="color: white;" onclick="shiftJp()"></i>
+            
+            <div class="collapse navbar-collapse mx-5" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active mx-3" href="https://django-blog1976.herokuapp.com/">
+                            <h5 class="t-font">伝えたいこと</h5>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <!-- <div class="" style="background: #1AB394; height: 60px; border-radius: 30px; color: white;">
+                    <h2>複利とは</h2>
+                </div> -->
+                <h3 id="compoundinterest" class="display-6 py-3 px-4 main-font text-center" style="margin-top: 150px; background-color: #1AB394; border-radius: 40px; color: white;">複利とは</h3>
+            </div>
+            <div class="col-md-10 my-5">
+                <h3 id="head-hukuri" class="display-6 py-3 px-4 main-font" style="margin-top: 150px;">アインシュタインは人類で最も偉大な発明は複利であるといった</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5 my-5 background-main">
+        <div class="row">
+            <div class="col-md-5 d-flex flex-column justify-content-center">
+                <div>
+                    <div class="card-body">
+                        <div class="card-title sub-font"><h5>元金 - Principal</h5></div>
+                        <input type="number" id="principal" oninput="changeGainList()" value=10000 style="width: 70%;">
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="card-body">
+                        <div class="card-title d-flex flex-row">
+                            <h5 class="sub-font">利回り比率 - Rate of Return</h5><h5 class="mx-4"><span id="rate-value"></span>％</h5>
+                        </div>
+                        <input type="range" id="rate" onchange="changeRate()" onmousemove="changeRangeNum()" min="0" max="0.3"
+                            step="0.001" value=0.072 style="width: 70%;">
+                    </div>
+                </div>
+                <div>
+                    <div class="card-body">
+                        <div class="card-title d-flex flex-row">
+                            <h5 class="sub-font">運用年数 - Investment Period</h5><h5 class="mx-4"><span id="label-value"></span>年</h5>
+                        </div>
+                        <input type="range" id="labelrange" onchange="changeLabel()" onmousemove="changeRangeNum()" min="1" max="300"
+                            step="1" value=80 style="width: 70%;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card border-light px-3">
+                    <canvas id="lineChart" height="500" width="600"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="card my-5 border-light">
+            <div class="card-body row">
+                <div class="col-md-6 text-center">
+                    <div class="card-title sub-font">総利益 - Maturity Amount</div>
+                    <p><span class="money-mark">¥</span><span id="maturityAmount"></span></p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="card-title sub-font">利回り比率 - Rate of Return</div>
+                    <p><span id="rate-value2"></span>％</p>
+                    <div class="card-title sub-font">運用年数 - Investment Period</div>
+                    <p><span id="label-value2"></span>年</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 複利チャート ここまで-->
+
+
+    <!--Cumulative Impact of Fee-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <!-- <div class="" style="background: #1AB394; height: 60px; border-radius: 30px; color: white;">
+                    <h2>複利とは</h2>
+                </div> -->
+                <h5 class="display-6 py-3 px-4 main-font text-center" style="margin-top: 150px; background-color: #1AB394; border-radius: 40px; color: white;">Cumulative Impact of Fee</h5>
+            </div>
+            <div class="col-md-10 my-5">
+                <h3 id="head-fee" class="display-6 py-3 px-4 main-font" style="margin-top: 150px;">信託手数料が及ぼす影響（信託手数料を引いた後の元利合計）</h3>
+            </div>
+        </div>
+    </div>
+  
+    <div class="container py-5 my-5 background-main">
+        <table class="table impact-fee-table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Time Horizon</th>
+                    <th>0%</th>
+                    <th>0.03%</th>
+                    <th>0.1%</th>
+                    <th>0.25%</th>
+                    <th>0.50%</th>
+                    <th>1.00%</th>
+                    <th>1.50%</th>
+                    <th>2.00%</th>
+                </tr>
+            </thead>
+  
+            <tr>
+                <th>3years</th>
+                <td>
+                    <h5 id="per-0-3"></h5><br>
+                    <h6 id="yen-0-3"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-3"></h5><br>
+                    <h6 id="yen-003-3"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-3"></h5><br>
+                    <h6 id="yen-01-3"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-3"></h5><br>
+                    <h6 id="yen-025-3"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-3"></h5><br>
+                    <h6 id="yen-050-3"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-3"></h5><br>
+                    <h6 id="yen-100-3"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-3"></h5><br>
+                    <h6 id="yen-150-3"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-3"></h5><br>
+                    <h6 id="yen-200-3"></h6>
+                </td>
+            </tr>
+
+            <tr>
+                <th>5years</th>
+                <td>
+                    <h5 id="per-0-5"></h5><br>
+                    <h6 id="yen-0-5"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-5"></h5><br>
+                    <h6 id="yen-003-5"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-5"></h5><br>
+                    <h6 id="yen-01-5"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-5"></h5><br>
+                    <h6 id="yen-025-5"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-5"></h5><br>
+                    <h6 id="yen-050-5"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-5"></h5><br>
+                    <h6 id="yen-100-5"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-5"></h5><br>
+                    <h6 id="yen-150-5"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-5"></h5><br>
+                    <h6 id="yen-200-5"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>10years</th>
+                <td>
+                    <h5 id="per-0-10"></h5><br>
+                    <h6 id="yen-0-10"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-10"></h5><br>
+                    <h6 id="yen-003-10"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-10"></h5><br>
+                    <h6 id="yen-01-10"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-10"></h5><br>
+                    <h6 id="yen-025-10"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-10"></h5><br>
+                    <h6 id="yen-050-10"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-10"></h5><br>
+                    <h6 id="yen-100-10"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-10"></h5><br>
+                    <h6 id="yen-150-10"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-10"></h5><br>
+                    <h6 id="yen-200-10"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>20years</th>
+                <td>
+                    <h5 id="per-0-20"></h5><br>
+                    <h6 id="yen-0-20"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-20"></h5><br>
+                    <h6 id="yen-003-20"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-20"></h5><br>
+                    <h6 id="yen-01-20"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-20"></h5><br>
+                    <h6 id="yen-025-20"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-20"></h5><br>
+                    <h6 id="yen-050-20"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-20"></h5><br>
+                    <h6 id="yen-100-20"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-20"></h5><br>
+                    <h6 id="yen-150-20"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-20"></h5><br>
+                    <h6 id="yen-200-20"></h6>
+                </td>
+            </tr>
+
+            <tr>
+                <th>30years</th>
+                <td>
+                    <h5 id="per-0-30"></h5><br>
+                    <h6 id="yen-0-30"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-30"></h5><br>
+                    <h6 id="yen-003-30"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-30"></h5><br>
+                    <h6 id="yen-01-30"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-30"></h5><br>
+                    <h6 id="yen-025-30"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-30"></h5><br>
+                    <h6 id="yen-050-30"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-30"></h5><br>
+                    <h6 id="yen-100-30"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-30"></h5><br>
+                    <h6 id="yen-150-30"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-30"></h5><br>
+                    <h6 id="yen-200-30"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>40years</th>
+                <td>
+                    <h5 id="per-0-40"></h5><br>
+                    <h6 id="yen-0-40"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-40"></h5><br>
+                    <h6 id="yen-003-40"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-40"></h5><br>
+                    <h6 id="yen-01-40"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-40"></h5><br>
+                    <h6 id="yen-025-40"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-40"></h5><br>
+                    <h6 id="yen-050-40"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-40"></h5><br>
+                    <h6 id="yen-100-40"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-40"></h5><br>
+                    <h6 id="yen-150-40"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-40"></h5><br>
+                    <h6 id="yen-200-40"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>50years</th>
+                <td>
+                    <h5 id="per-0-50"></h5><br>
+                    <h6 id="yen-0-50"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-50"></h5><br>
+                    <h6 id="yen-003-50"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-50"></h5><br>
+                    <h6 id="yen-01-50"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-50"></h5><br>
+                    <h6 id="yen-025-50"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-50"></h5><br>
+                    <h6 id="yen-050-50"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-50"></h5><br>
+                    <h6 id="yen-100-50"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-50"></h5><br>
+                    <h6 id="yen-150-50"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-50"></h5><br>
+                    <h6 id="yen-200-50"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>60years</th>
+                <td>
+                    <h5 id="per-0-60"></h5><br>
+                    <h6 id="yen-0-60"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-60"></h5><br>
+                    <h6 id="yen-003-60"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-60"></h5><br>
+                    <h6 id="yen-01-60"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-60"></h5><br>
+                    <h6 id="yen-025-60"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-60"></h5><br>
+                    <h6 id="yen-050-60"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-60"></h5><br>
+                    <h6 id="yen-100-60"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-60"></h5><br>
+                    <h6 id="yen-150-60"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-60"></h5><br>
+                    <h6 id="yen-200-60"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>70years</th>
+                <td>
+                    <h5 id="per-0-70"></h5><br>
+                    <h6 id="yen-0-70"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-70"></h5><br>
+                    <h6 id="yen-003-70"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-70"></h5><br>
+                    <h6 id="yen-01-70"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-70"></h5><br>
+                    <h6 id="yen-025-70"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-70"></h5><br>
+                    <h6 id="yen-050-70"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-70"></h5><br>
+                    <h6 id="yen-100-70"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-70"></h5><br>
+                    <h6 id="yen-150-70"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-70"></h5><br>
+                    <h6 id="yen-200-70"></h6>
+                </td>
+            </tr>
+  
+            <tr>
+                <th>80years</th>
+                <td>
+                    <h5 id="per-0-80"></h5><br>
+                    <h6 id="yen-0-80"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-80"></h5><br>
+                    <h6 id="yen-003-80"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-80"></h5><br>
+                    <h6 id="yen-01-80"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-80"></h5><br>
+                    <h6 id="yen-025-80"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-80"></h5><br>
+                    <h6 id="yen-050-80"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-80"></h5><br>
+                    <h6 id="yen-100-80"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-80"></h5><br>
+                    <h6 id="yen-150-80"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-80"></h5><br>
+                    <h6 id="yen-200-80"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>90years</th>
+                <td>
+                    <h5 id="per-0-90"></h5><br>
+                    <h6 id="yen-0-90"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-90"></h5><br>
+                    <h6 id="yen-003-90"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-90"></h5><br>
+                    <h6 id="yen-01-90"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-90"></h5><br>
+                    <h6 id="yen-025-90"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-90"></h5><br>
+                    <h6 id="yen-050-90"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-90"></h5><br>
+                    <h6 id="yen-100-90"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-90"></h5><br>
+                    <h6 id="yen-150-90"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-90"></h5><br>
+                    <h6 id="yen-200-90"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>100years</th>
+                <td>
+                    <h5 id="per-0-100"></h5><br>
+                    <h6 id="yen-0-100"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-100"></h5><br>
+                    <h6 id="yen-003-100"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-100"></h5><br>
+                    <h6 id="yen-01-100"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-100"></h5><br>
+                    <h6 id="yen-025-100"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-100"></h5><br>
+                    <h6 id="yen-050-100"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-100"></h5><br>
+                    <h6 id="yen-100-100"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-100"></h5><br>
+                    <h6 id="yen-150-100"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-100"></h5><br>
+                    <h6 id="yen-200-100"></h6>
+                </td>
+                
+            </tr>
+            <tr>
+                <th>110years</th>
+                <td>
+                    <h5 id="per-0-110"></h5><br>
+                    <h6 id="yen-0-110"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-110"></h5><br>
+                    <h6 id="yen-003-110"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-110"></h5><br>
+                    <h6 id="yen-01-110"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-110"></h5><br>
+                    <h6 id="yen-025-110"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-110"></h5><br>
+                    <h6 id="yen-050-110"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-110"></h5><br>
+                    <h6 id="yen-100-110"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-110"></h5><br>
+                    <h6 id="yen-150-110"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-110"></h5><br>
+                    <h6 id="yen-200-110"></h6>
+                </td>
+            </tr>
+  
+            <tr>
+                <th>120years</th>
+                <td>
+                    <h5 id="per-0-120"></h5><br>
+                    <h6 id="yen-0-120"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-120"></h5><br>
+                    <h6 id="yen-003-120"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-120"></h5><br>
+                    <h6 id="yen-01-120"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-120"></h5><br>
+                    <h6 id="yen-025-120"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-120"></h5><br>
+                    <h6 id="yen-050-120"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-120"></h5><br>
+                    <h6 id="yen-100-120"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-120"></h5><br>
+                    <h6 id="yen-150-120"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-120"></h5><br>
+                    <h6 id="yen-200-120"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>130years</th>
+                <td>
+                    <h5 id="per-0-130"></h5><br>
+                    <h6 id="yen-0-130"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-130"></h5><br>
+                    <h6 id="yen-003-130"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-130"></h5><br>
+                    <h6 id="yen-01-130"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-130"></h5><br>
+                    <h6 id="yen-025-130"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-130"></h5><br>
+                    <h6 id="yen-050-130"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-130"></h5><br>
+                    <h6 id="yen-100-130"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-130"></h5><br>
+                    <h6 id="yen-150-130"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-130"></h5><br>
+                    <h6 id="yen-200-130"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>140years</th>
+                <td>
+                    <h5 id="per-0-140"></h5><br>
+                    <h6 id="yen-0-140"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-140"></h5><br>
+                    <h6 id="yen-003-140"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-140"></h5><br>
+                    <h6 id="yen-01-140"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-140"></h5><br>
+                    <h6 id="yen-025-140"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-140"></h5><br>
+                    <h6 id="yen-050-140"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-140"></h5><br>
+                    <h6 id="yen-100-140"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-140"></h5><br>
+                    <h6 id="yen-150-140"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-140"></h5><br>
+                    <h6 id="yen-200-140"></h6>
+                </td>
+            </tr>
+
+            <tr>
+                <th>150years</th>
+                <td>
+                    <h5 id="per-0-150"></h5><br>
+                    <h6 id="yen-0-150"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-150"></h5><br>
+                    <h6 id="yen-003-150"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-150"></h5><br>
+                    <h6 id="yen-01-150"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-150"></h5><br>
+                    <h6 id="yen-025-150"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-150"></h5><br>
+                    <h6 id="yen-050-150"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-150"></h5><br>
+                    <h6 id="yen-100-150"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-150"></h5><br>
+                    <h6 id="yen-150-150"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-150"></h5><br>
+                    <h6 id="yen-200-150"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>160years</th>
+                <td>
+                    <h5 id="per-0-160"></h5><br>
+                    <h6 id="yen-0-160"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-160"></h5><br>
+                    <h6 id="yen-003-160"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-160"></h5><br>
+                    <h6 id="yen-01-160"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-160"></h5><br>
+                    <h6 id="yen-025-160"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-160"></h5><br>
+                    <h6 id="yen-050-160"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-160"></h5><br>
+                    <h6 id="yen-100-160"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-160"></h5><br>
+                    <h6 id="yen-150-160"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-160"></h5><br>
+                    <h6 id="yen-200-160"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>170years</th>
+                <td>
+                    <h5 id="per-0-170"></h5><br>
+                    <h6 id="yen-0-170"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-170"></h5><br>
+                    <h6 id="yen-003-170"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-170"></h5><br>
+                    <h6 id="yen-01-170"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-170"></h5><br>
+                    <h6 id="yen-025-170"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-170"></h5><br>
+                    <h6 id="yen-050-170"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-170"></h5><br>
+                    <h6 id="yen-100-170"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-170"></h5><br>
+                    <h6 id="yen-150-170"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-170"></h5><br>
+                    <h6 id="yen-200-170"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>180years</th>
+                <td>
+                    <h5 id="per-0-180"></h5><br>
+                    <h6 id="yen-0-180"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-180"></h5><br>
+                    <h6 id="yen-003-180"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-180"></h5><br>
+                    <h6 id="yen-01-180"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-180"></h5><br>
+                    <h6 id="yen-025-180"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-180"></h5><br>
+                    <h6 id="yen-050-180"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-180"></h5><br>
+                    <h6 id="yen-100-180"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-180"></h5><br>
+                    <h6 id="yen-150-180"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-180"></h5><br>
+                    <h6 id="yen-200-180"></h6>
+                </td>
+            </tr>
+            <tr>
+                <th>190years</th>
+                <td>
+                    <h5 id="per-0-190"></h5><br>
+                    <h6 id="yen-0-190"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-190"></h5><br>
+                    <h6 id="yen-003-190"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-190"></h5><br>
+                    <h6 id="yen-01-190"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-190"></h5><br>
+                    <h6 id="yen-025-190"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-190"></h5><br>
+                    <h6 id="yen-050-190"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-190"></h5><br>
+                    <h6 id="yen-100-190"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-190"></h5><br>
+                    <h6 id="yen-150-190"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-190"></h5><br>
+                    <h6 id="yen-200-190"></h6>
+                </td>
+            </tr>
+  
+            <tr>
+                <th>200years</th>
+                <td>
+                    <h5 id="per-0-200"></h5><br>
+                    <h6 id="yen-0-200"></h6>
+                </td>
+                <td>
+                    <h5 id="per-003-200"></h5><br>
+                    <h6 id="yen-003-200"></h6>
+                </td>
+                <td>
+                    <h5 id="per-01-200"></h5><br>
+                    <h6 id="yen-01-200"></h6>
+                </td>
+                <td>
+                    <h5 id="per-025-200"></h5><br>
+                    <h6 id="yen-025-200"></h6>
+                </td>
+                <td>
+                    <h5 id="per-050-200"></h5><br>
+                    <h6 id="yen-050-200"></h6>
+                </td>
+                <td>
+                    <h5 id="per-100-200"></h5><br>
+                    <h6 id="yen-100-200"></h6>
+                </td>
+                <td>
+                    <h5 id="per-150-200"></h5><br>
+                    <h6 id="yen-150-200"></h6>
+                </td>
+                <td>
+                    <h5 id="per-200-200"></h5><br>
+                    <h6 id="yen-200-200"></h6>
+                </td>
+           
+            </tr>
+  
+  
+  
+        </table>
+  
+  
+    </div>
+  
+    <!-- !ここからTotal -->
+  
+    <div class="container">
+      <div class="row">
+          <div class="col-md-2 my-5">
+              <!-- <div class="" style="background: #1AB394; height: 60px; border-radius: 30px; color: white;">
+                  <h2>複利とは</h2>
+              </div> -->
+              <h5 class="display-6 py-3 px-4 main-font text-center" style="margin-top: 150px; background-color: #1AB394; border-radius: 40px; color: white;">Cumulative Impact of Fee</h5>
+          </div>
+          <div class="col-md-10 my-5">
+              <h3 id="head-tax"  class="display-6 py-3 px-4 main-font" style="margin-top: 150px;">税引き後の元利合計（税金もコストである）</h3>
+          </div>
+      </div>
+  </div>
+
+  <div class="container py-5 my-5 background-main">
+    <table class="table impact-fee-table">
+        <thead class="thead-light">
+            <tr>
+                <th>Time Horizon</th>
+                <th>0%</th>
+                <th>0.03%</th>
+                <th>0.1%</th>
+                <th>0.25%</th>
+                <th>0.50%</th>
+                <th>1.00%</th>
+                <th>1.50%</th>
+                <th>2.00%</th>
+            </tr>
+        </thead>
+
+        <tr>
+            <th>3years</th>
+            <td>
+                <h5 id="tax-per-0-3"></h5><br>
+                <h6 id="tax-yen-0-3"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-3"></h5><br>
+                <h6 id="tax-yen-003-3"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-3"></h5><br>
+                <h6 id="tax-yen-01-3"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-3"></h5><br>
+                <h6 id="tax-yen-025-3"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-3"></h5><br>
+                <h6 id="tax-yen-050-3"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-3"></h5><br>
+                <h6 id="tax-yen-100-3"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-3"></h5><br>
+                <h6 id="tax-yen-150-3"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-3"></h5><br>
+                <h6 id="tax-yen-200-3"></h6>
+            </td>
+        </tr>
+
+        <tr>
+            <th>5years</th>
+            <td>
+                <h5 id="tax-per-0-5"></h5><br>
+                <h6 id="tax-yen-0-5"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-5"></h5><br>
+                <h6 id="tax-yen-003-5"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-5"></h5><br>
+                <h6 id="tax-yen-01-5"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-5"></h5><br>
+                <h6 id="tax-yen-025-5"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-5"></h5><br>
+                <h6 id="tax-yen-050-5"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-5"></h5><br>
+                <h6 id="tax-yen-100-5"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-5"></h5><br>
+                <h6 id="tax-yen-150-5"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-5"></h5><br>
+                <h6 id="tax-yen-200-5"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>10years</th>
+            <td>
+                <h5 id="tax-per-0-10"></h5><br>
+                <h6 id="tax-yen-0-10"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-10"></h5><br>
+                <h6 id="tax-yen-003-10"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-10"></h5><br>
+                <h6 id="tax-yen-01-10"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-10"></h5><br>
+                <h6 id="tax-yen-025-10"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-10"></h5><br>
+                <h6 id="tax-yen-050-10"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-10"></h5><br>
+                <h6 id="tax-yen-100-10"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-10"></h5><br>
+                <h6 id="tax-yen-150-10"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-10"></h5><br>
+                <h6 id="tax-yen-200-10"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>20years</th>
+            <td>
+                <h5 id="tax-per-0-20"></h5><br>
+                <h6 id="tax-yen-0-20"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-20"></h5><br>
+                <h6 id="tax-yen-003-20"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-20"></h5><br>
+                <h6 id="tax-yen-01-20"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-20"></h5><br>
+                <h6 id="tax-yen-025-20"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-20"></h5><br>
+                <h6 id="tax-yen-050-20"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-20"></h5><br>
+                <h6 id="tax-yen-100-20"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-20"></h5><br>
+                <h6 id="tax-yen-150-20"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-20"></h5><br>
+                <h6 id="tax-yen-200-20"></h6>
+            </td>
+        </tr>
+
+        <tr>
+            <th>30years</th>
+            <td>
+                <h5 id="tax-per-0-30"></h5><br>
+                <h6 id="tax-yen-0-30"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-30"></h5><br>
+                <h6 id="tax-yen-003-30"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-30"></h5><br>
+                <h6 id="tax-yen-01-30"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-30"></h5><br>
+                <h6 id="tax-yen-025-30"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-30"></h5><br>
+                <h6 id="tax-yen-050-30"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-30"></h5><br>
+                <h6 id="tax-yen-100-30"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-30"></h5><br>
+                <h6 id="tax-yen-150-30"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-30"></h5><br>
+                <h6 id="tax-yen-200-30"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>40years</th>
+            <td>
+                <h5 id="tax-per-0-40"></h5><br>
+                <h6 id="tax-yen-0-40"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-40"></h5><br>
+                <h6 id="tax-yen-003-40"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-40"></h5><br>
+                <h6 id="tax-yen-01-40"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-40"></h5><br>
+                <h6 id="tax-yen-025-40"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-40"></h5><br>
+                <h6 id="tax-yen-050-40"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-40"></h5><br>
+                <h6 id="tax-yen-100-40"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-40"></h5><br>
+                <h6 id="tax-yen-150-40"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-40"></h5><br>
+                <h6 id="tax-yen-200-40"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>50years</th>
+            <td>
+                <h5 id="tax-per-0-50"></h5><br>
+                <h6 id="tax-yen-0-50"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-50"></h5><br>
+                <h6 id="tax-yen-003-50"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-50"></h5><br>
+                <h6 id="tax-yen-01-50"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-50"></h5><br>
+                <h6 id="tax-yen-025-50"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-50"></h5><br>
+                <h6 id="tax-yen-050-50"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-50"></h5><br>
+                <h6 id="tax-yen-100-50"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-50"></h5><br>
+                <h6 id="tax-yen-150-50"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-50"></h5><br>
+                <h6 id="tax-yen-200-50"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>60years</th>
+            <td>
+                <h5 id="tax-per-0-60"></h5><br>
+                <h6 id="tax-yen-0-60"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-60"></h5><br>
+                <h6 id="tax-yen-003-60"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-60"></h5><br>
+                <h6 id="tax-yen-01-60"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-60"></h5><br>
+                <h6 id="tax-yen-025-60"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-60"></h5><br>
+                <h6 id="tax-yen-050-60"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-60"></h5><br>
+                <h6 id="tax-yen-100-60"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-60"></h5><br>
+                <h6 id="tax-yen-150-60"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-60"></h5><br>
+                <h6 id="tax-yen-200-60"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>70years</th>
+            <td>
+                <h5 id="tax-per-0-70"></h5><br>
+                <h6 id="tax-yen-0-70"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-70"></h5><br>
+                <h6 id="tax-yen-003-70"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-70"></h5><br>
+                <h6 id="tax-yen-01-70"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-70"></h5><br>
+                <h6 id="tax-yen-025-70"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-70"></h5><br>
+                <h6 id="tax-yen-050-70"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-70"></h5><br>
+                <h6 id="tax-yen-100-70"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-70"></h5><br>
+                <h6 id="tax-yen-150-70"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-70"></h5><br>
+                <h6 id="tax-yen-200-70"></h6>
+            </td>
+        </tr>
+
+        <tr>
+            <th>80years</th>
+            <td>
+                <h5 id="tax-per-0-80"></h5><br>
+                <h6 id="tax-yen-0-80"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-80"></h5><br>
+                <h6 id="tax-yen-003-80"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-80"></h5><br>
+                <h6 id="tax-yen-01-80"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-80"></h5><br>
+                <h6 id="tax-yen-025-80"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-80"></h5><br>
+                <h6 id="tax-yen-050-80"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-80"></h5><br>
+                <h6 id="tax-yen-100-80"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-80"></h5><br>
+                <h6 id="tax-yen-150-80"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-80"></h5><br>
+                <h6 id="tax-yen-200-80"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>90years</th>
+            <td>
+                <h5 id="tax-per-0-90"></h5><br>
+                <h6 id="tax-yen-0-90"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-90"></h5><br>
+                <h6 id="tax-yen-003-90"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-90"></h5><br>
+                <h6 id="tax-yen-01-90"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-90"></h5><br>
+                <h6 id="tax-yen-025-90"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-90"></h5><br>
+                <h6 id="tax-yen-050-90"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-90"></h5><br>
+                <h6 id="tax-yen-100-90"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-90"></h5><br>
+                <h6 id="tax-yen-150-90"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-90"></h5><br>
+                <h6 id="tax-yen-200-90"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>100years</th>
+            <td>
+                <h5 id="tax-per-0-100"></h5><br>
+                <h6 id="tax-yen-0-100"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-100"></h5><br>
+                <h6 id="tax-yen-003-100"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-100"></h5><br>
+                <h6 id="tax-yen-01-100"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-100"></h5><br>
+                <h6 id="tax-yen-025-100"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-100"></h5><br>
+                <h6 id="tax-yen-050-100"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-100"></h5><br>
+                <h6 id="tax-yen-100-100"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-100"></h5><br>
+                <h6 id="tax-yen-150-100"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-100"></h5><br>
+                <h6 id="tax-yen-200-100"></h6>
+            </td>
+            
+        </tr>
+        <tr>
+            <th>110years</th>
+            <td>
+                <h5 id="tax-per-0-110"></h5><br>
+                <h6 id="tax-yen-0-110"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-110"></h5><br>
+                <h6 id="tax-yen-003-110"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-110"></h5><br>
+                <h6 id="tax-yen-01-110"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-110"></h5><br>
+                <h6 id="tax-yen-025-110"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-110"></h5><br>
+                <h6 id="tax-yen-050-110"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-110"></h5><br>
+                <h6 id="tax-yen-100-110"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-110"></h5><br>
+                <h6 id="tax-yen-150-110"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-110"></h5><br>
+                <h6 id="tax-yen-200-110"></h6>
+            </td>
+        </tr>
+
+        <tr>
+            <th>120years</th>
+            <td>
+                <h5 id="tax-per-0-120"></h5><br>
+                <h6 id="tax-yen-0-120"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-120"></h5><br>
+                <h6 id="tax-yen-003-120"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-120"></h5><br>
+                <h6 id="tax-yen-01-120"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-120"></h5><br>
+                <h6 id="tax-yen-025-120"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-120"></h5><br>
+                <h6 id="tax-yen-050-120"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-120"></h5><br>
+                <h6 id="tax-yen-100-120"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-120"></h5><br>
+                <h6 id="tax-yen-150-120"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-120"></h5><br>
+                <h6 id="tax-yen-200-120"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>130years</th>
+            <td>
+                <h5 id="tax-per-0-130"></h5><br>
+                <h6 id="tax-yen-0-130"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-130"></h5><br>
+                <h6 id="tax-yen-003-130"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-130"></h5><br>
+                <h6 id="tax-yen-01-130"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-130"></h5><br>
+                <h6 id="tax-yen-025-130"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-130"></h5><br>
+                <h6 id="tax-yen-050-130"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-130"></h5><br>
+                <h6 id="tax-yen-100-130"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-130"></h5><br>
+                <h6 id="tax-yen-150-130"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-130"></h5><br>
+                <h6 id="tax-yen-200-130"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>140years</th>
+            <td>
+                <h5 id="tax-per-0-140"></h5><br>
+                <h6 id="tax-yen-0-140"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-140"></h5><br>
+                <h6 id="tax-yen-003-140"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-140"></h5><br>
+                <h6 id="tax-yen-01-140"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-140"></h5><br>
+                <h6 id="tax-yen-025-140"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-140"></h5><br>
+                <h6 id="tax-yen-050-140"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-140"></h5><br>
+                <h6 id="tax-yen-100-140"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-140"></h5><br>
+                <h6 id="tax-yen-150-140"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-140"></h5><br>
+                <h6 id="tax-yen-200-140"></h6>
+            </td>
+        </tr>
+
+        <tr>
+            <th>150years</th>
+            <td>
+                <h5 id="tax-per-0-150"></h5><br>
+                <h6 id="tax-yen-0-150"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-150"></h5><br>
+                <h6 id="tax-yen-003-150"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-150"></h5><br>
+                <h6 id="tax-yen-01-150"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-150"></h5><br>
+                <h6 id="tax-yen-025-150"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-150"></h5><br>
+                <h6 id="tax-yen-050-150"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-150"></h5><br>
+                <h6 id="tax-yen-100-150"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-150"></h5><br>
+                <h6 id="tax-yen-150-150"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-150"></h5><br>
+                <h6 id="tax-yen-200-150"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>160years</th>
+            <td>
+                <h5 id="tax-per-0-160"></h5><br>
+                <h6 id="tax-yen-0-160"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-160"></h5><br>
+                <h6 id="tax-yen-003-160"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-160"></h5><br>
+                <h6 id="tax-yen-01-160"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-160"></h5><br>
+                <h6 id="tax-yen-025-160"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-160"></h5><br>
+                <h6 id="tax-yen-050-160"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-160"></h5><br>
+                <h6 id="tax-yen-100-160"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-160"></h5><br>
+                <h6 id="tax-yen-150-160"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-160"></h5><br>
+                <h6 id="tax-yen-200-160"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>170years</th>
+            <td>
+                <h5 id="tax-per-0-170"></h5><br>
+                <h6 id="tax-yen-0-170"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-170"></h5><br>
+                <h6 id="tax-yen-003-170"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-170"></h5><br>
+                <h6 id="tax-yen-01-170"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-170"></h5><br>
+                <h6 id="tax-yen-025-170"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-170"></h5><br>
+                <h6 id="tax-yen-050-170"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-170"></h5><br>
+                <h6 id="tax-yen-100-170"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-170"></h5><br>
+                <h6 id="tax-yen-150-170"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-170"></h5><br>
+                <h6 id="tax-yen-200-170"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>180years</th>
+            <td>
+                <h5 id="tax-per-0-180"></h5><br>
+                <h6 id="tax-yen-0-180"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-180"></h5><br>
+                <h6 id="tax-yen-003-180"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-180"></h5><br>
+                <h6 id="tax-yen-01-180"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-180"></h5><br>
+                <h6 id="tax-yen-025-180"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-180"></h5><br>
+                <h6 id="tax-yen-050-180"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-180"></h5><br>
+                <h6 id="tax-yen-100-180"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-180"></h5><br>
+                <h6 id="tax-yen-150-180"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-180"></h5><br>
+                <h6 id="tax-yen-200-180"></h6>
+            </td>
+        </tr>
+        <tr>
+            <th>190years</th>
+            <td>
+                <h5 id="tax-per-0-190"></h5><br>
+                <h6 id="tax-yen-0-190"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-190"></h5><br>
+                <h6 id="tax-yen-003-190"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-190"></h5><br>
+                <h6 id="tax-yen-01-190"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-190"></h5><br>
+                <h6 id="tax-yen-025-190"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-190"></h5><br>
+                <h6 id="tax-yen-050-190"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-190"></h5><br>
+                <h6 id="tax-yen-100-190"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-190"></h5><br>
+                <h6 id="tax-yen-150-190"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-190"></h5><br>
+                <h6 id="tax-yen-200-190"></h6>
+            </td>
+        </tr>
+
+        <tr>
+            <th>200years</th>
+            <td>
+                <h5 id="tax-per-0-200"></h5><br>
+                <h6 id="tax-yen-0-200"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-003-200"></h5><br>
+                <h6 id="tax-yen-003-200"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-01-200"></h5><br>
+                <h6 id="tax-yen-01-200"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-025-200"></h5><br>
+                <h6 id="tax-yen-025-200"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-050-200"></h5><br>
+                <h6 id="tax-yen-050-200"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-100-200"></h5><br>
+                <h6 id="tax-yen-100-200"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-150-200"></h5><br>
+                <h6 id="tax-yen-150-200"></h6>
+            </td>
+            <td>
+                <h5 id="tax-per-200-200"></h5><br>
+                <h6 id="tax-yen-200-200"></h6>
+            </td>
+
+        </tr>
+
+
+
+
+
+    </table>
+  </div>
+
+
+    <!-- コスト -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <h3 id="cost" class="display-6 py-3 px-4 main-font text-center"
+                    style="margin-top: 100px; background-color: #1AB394; border-radius: 40px; color: white;">コスト</h3>
+            </div>
+            <div class="col-md-10 my-5">
+                <h3 id="head-aftertax" class="display-6 py-3 px-4 main-font" style="margin-top: 100px;">手数料と税金</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5 my-5 background-main">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card border-light my-5 px-4">
+                    <canvas id="feeChart" height="300" width="400"></canvas>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex flex-column justify-content-center">
+                <div>
+                    <h5 class="text-center sub-font">手数料なし</h5>
+                    <h6 class="text-center my-1">＄<span id="noFee"></span></h6>
+                    <div class="d-flex justify-content-center">
+                        <h6 class="my-3">-<span id=""></span>%</h6>
+                        <p class="align-self-end px-1 costDetailFont">(手数料:-<span id=""></span>, 税金:-<span id=""></span>)</p>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <h5 class="text-center sub-font">手数料0.03％</h5>
+                    <h6 class="text-center my-1">＄<span id="usVgFee"></span></h6>
+                    <div class="d-flex justify-content-center">
+                        <h6 class="my-3">-<span id="usVgLoss"></span>%</h6>
+                        <p class="align-self-end px-1 costDetailFont">(手数料:-<span id=""></span>, 税金:-<span id=""></span>)</p>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <h5 class="text-center sub-font">手数料0.1％</h5>
+                    <h6 class="text-center my-1">＄<span id="vanguardFee"></span></h6>
+                    <div class="d-flex justify-content-center">
+                        <h6 class="my-3">-<span id="vanguardLoss"></span>%</h6>
+                        <p class="align-self-end px-1 costDetailFont">(手数料:-<span id=""></span>, 税金:-<span id=""></span>)</p>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <h5 class="text-center sub-font">手数料1％</h5>
+                    <h6 class="text-center my-1">＄<span id="hedgeFee"></span></h6>
+                    <div class="d-flex justify-content-center">
+                        <h6 class="my-3">-<span id="hedgeLoss"></span>%</h6>
+                        <p class="align-self-end px-1 costDetailFont">(手数料:-<span id=""></span>, 税金:-<span id=""></span>)</p>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-center sub-font">手数料2％</h5>
+                    <h6 class="text-center my-1">＄<span id="scamFee"></span></h6>
+                    <div class="d-flex justify-content-center">
+                        <h6 class="my-3" style="color: red;">-<span id="scamLoss"></span>%</h6>
+                        <p class="align-self-end px-1 costDetailFont">(手数料:-<span id=""></span>, 税金:-<span id=""></span>)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 棒グラフ -->
+        <div class="card border-light my-5 px-4">
+            <canvas id="barChart" height="300" width="400"></canvas>
+        </div>
+        
+
+
+
+
+
+
+
+        <!-- ここからスライド式で文字表示CSS -->
+        <div class="card my-5 border-light">
+            <a class="vtiLink" href="https://investor.vanguard.com/mutual-funds/profile/fees/vtsax" target="_blank" rel="noreferrer"><h3 id="VTItext" class="text-center py-4 main-font">投資信託で買うのはこのVanguard社一択のVTSAX</h3></a>
+        </div>
+
+        <!-- 積立投資シミュレーション  aria-controls="founded-finaly" aria-selected="ture"-->
+        <h3 id="fundedinvestment" class="sub-font mx-3 py-5" style="margin-top: 30px;">積立投資シミュレーション</h3>
+        <ul class="nav nav-tabs nav-fill" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="founded-finaly-tab" data-toggle="tab" href="#founded-finaly" role="tab">最終積立金額</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="founded-monthly-tab" data-toggle="tab" href="#founded-monthly" role="tab">毎月の積立金額</a>
+            </li>
+            <li class="nav-item" id="founded-period-tab">
+                <a class="nav-link" data-toggle="tab" href="#founded-period" role="tab">投資期間</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="founded-rate-tab" data-toggle="tab" href="#founded-rate" role="tab">利回り</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <!-- 最終積立金額 aria-labelledby="founded-finaly-tab"-->
+            <div class="tab-pane fade show active" id="founded-finaly" role="tabpanel">
+                <div class="row px-3 py-5">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="monthly_amount_addon" class="input-group-text"
+                                    for="id_last_funded_monthly_amount">毎月の投資金額</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_last_funded_monthly_amount" value="10000"
+                                min="0" max="9999999" step="100" required pattern="\d*" aria-describedby='monthly_amount_addon'
+                                data-toggle="tooltip" title="最終積立金額に到達するまでの期間に、毎月投資する金額">
+                            <div class="input-group-append">
+                                <label id="monthly_amount_addon" class="input-group-text" for="id_last_funded_monthly_amount">円</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="period_addon" class="input-group-text" for='id_last_funded_period'>投資期間</label>
+                            </div>
+                            <input type="number" class="form-control text-right" value="20" min="0" max="300" required
+                                id="id_last_funded_period" pattern="\d*" aria-describedby='period_addon' data-toggle="tooltip"
+                                title="現在から最終積立金額に到達するまでの期間">
+                            <div class="input-group-append">
+                                <label id="period_addon" class="input-group-text" for='id_last_funded_period'>年</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="yearly_yield_addon" class="input-group-text" for="id_last_funded_yearly_yield">利回り</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_last_funded_yearly_yield" value="7" min="-99.9"
+                                max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon' data-toggle="tooltip"
+                                title="目標とする年間の利回り">
+                            <div class="input-group-append">
+                                <label id="yearly_yield_addon" class="input-group-text" for="id_last_funded_yearly_yield">%</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="result"></h3>
+                    </div>
+                </div>
+                <div class="card border-light px-3">
+                    <canvas id="id_first_tab_radar_chart" height="400" width="500"></canvas>
+                </div>
+            </div>
+            <!-- 毎月の積立金額 aria-labelledby="founded-monthly-tab"-->
+            <div class="tab-pane fade" id="founded-monthly" role="tabpanel">
+                <div class="row px-3 py-5">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="last_funded_addon" class="input-group-text"
+                                    for="id_monthly_amount_last_funded_amount">最終積立金額</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_monthly_amount_last_funded_amount"
+                                value="20000000" min="0" max="9999999999" step="100" required pattern="\d*"
+                                aria-describedby='last_funded_addon' data-toggle="tooltip" title="目標とする最終的な投資元本と運用益の合計金額">
+                            <div class="input-group-append">
+                                <label id="last_funded_addon" class="input-group-text"
+                                    for="id_monthly_amount_last_funded_amount">円</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="period_addon" class="input-group-text" for="id_monthly_amount_period">投資期間</label>
+                            </div>
+                            <input type="number" class="form-control text-right" value="20" min="0" max="300" required
+                                id="id_monthly_amount_period" pattern="\d*" aria-describedby='period_addon' data-toggle="tooltip"
+                                title="現在から最終積立金額に到達するまでの期間">
+                            <div class="input-group-append">
+                                <label id="period_addon" class="input-group-text" for="id_monthly_amount_period">年</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="yearly_yield_addon" class="input-group-text" for="id_monthly_amount_yearly_yield">利回り</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_monthly_amount_yearly_yield" value="7"
+                                min="-99.9" max="99.9" step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon'
+                                data-toggle="tooltip" title="目標とする年間の利回り">
+                            <div class="input-group-append">
+                                <label id="yearly_yield_addon" class="input-group-text" for="id_monthly_amount_yearly_yield">%</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="result"></h3>
+                    </div>
+                </div>
+                <div class="card border-light px-3">
+                    <canvas id="id_second_tab_radar_chart" height="400" width="500"></canvas>
+                </div>
+            </div>
+            <!-- 積立期間 aria-labelledby="founded-period-tab"-->
+            <div class="tab-pane fade" id="founded-period" role="tabpanel">
+                <div class="row px-3 py-5">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">最終積立金額</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_period_last_funded_amount" value="20000000" min="0"
+                                max="9999999999" step="100" required pattern="\d*" aria-describedby='last_funded_addon'
+                                data-toggle="tooltip" title="目標とする最終的な投資元本と運用益の合計金額">
+                            <div class="input-group-append">
+                                <label id="last_funded_addon" class="input-group-text" for="id_period_last_funded_amount">円</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="monthly_amount_addon" class="input-group-text" for="id_period_monthly_amount">毎月の投資金額</label>
+                            </div>
+                            <input type="number" class="form-control text-right" value="40000" min="0" max="99999999" step="100" required
+                                id="id_period_monthly_amount" pattern="\d*" aria-describedby='monthly_amount_addon' data-toggle="tooltip"
+                                title="最終積立金額に到達するまでの期間に、毎月投資する金額">
+                            <div class="input-group-append">
+                                <label id="monthly_amount_addon" class="input-group-text" for="id_period_monthly_amount">円</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="yearly_yield_addon" class="input-group-text" for="id_period_yearly_yield">利回り</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_period_yearly_yield" value="7" min="-99.9" max="99.9"
+                                step="0.1" required pattern="\d*" aria-describedby='yearly_yield_addon' data-toggle="tooltip"
+                                title="目標とする年間の利回り">
+                            <div class="input-group-append">
+                                <label id="yearly_yield_addon" class="input-group-text" for="id_period_yearly_yield">%</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="result"></h3>
+                    </div>
+                </div>
+                <div class="card border-light px-3">
+                    <canvas id="id_third_tab_radar_chart" height="400" width="500"></canvas>
+                </div>
+            </div>
+            <!-- 利回り aria-labelledby="founded-rate-tab"-->
+            <div class="tab-pane fade" id="founded-rate" role="tabpanel">
+                <div class="row px-3 py-5">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">最終積立金額</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_yearly_yield_last_funded_amount" value="20000000"
+                                min="0" max="9999999999" step="100" required pattern="\d*" aria-describedby='last_funded_addon'
+                                data-toggle="tooltip" title="目標とする最終的な投資元本と運用益の合計金額">
+                            <div class="input-group-append">
+                                <label id="last_funded_addon" class="input-group-text" for="id_yearly_yield_last_funded_amount">円</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="monthly_amount_addon" class="input-group-text" for="id_yearly_yield_monthly_amount">毎月の投資金額</label>
+                            </div>
+                            <input type="number" class="form-control text-right" value="40000" min="0" max="99999999" step="100" required
+                                id="id_yearly_yield_monthly_amount" pattern="\d*" aria-describedby='monthly_amount_addon' data-toggle="tooltip"
+                                title="最終積立金額に到達するまでの期間に、毎月投資する金額">
+                            <div class="input-group-append">
+                                <label id="monthly_amount_addon" class="input-group-text" for="id_yearly_yield_monthly_amount">円</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label id="period_addon" class="input-group-text" for="id_yearly_yield_period">投資期間</label>
+                            </div>
+                            <input type="number" class="form-control text-right" id="id_yearly_yield_period" value="20" min="-99.9" max="300"
+                                required pattern="\d*" aria-describedby='period_addon' data-toggle="tooltip" title="現在から最終積立金額に到達するまでの期間">
+                            <div class="input-group-append">
+                                <label id="period_addon" class="input-group-text" for="id_yearly_yield_period">年</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="result"></h3>
+                    </div>
+                </div>
+                <div class="card border-light px-3">
+                    <canvas id="id_forth_tab_radar_chart" height="400" width="500"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- コスト　ここまで -->
+
+
+
+
+
+
+
+
+    <!-- S&P500 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <h3 class="display-6 py-3 px-4 main-font text-center"
+                    style="margin-top: 100px; background-color: #1AB394; border-radius: 40px; color: white;">S&P500</h3>
+            </div>
+            <div class="col-md-10 my-5">
+                <h3 class="display-6 py-3 px-4 main-font" style="margin-top: 100px;">過去100年間の平均と今後100年間</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5 my-5 background-main">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-center">S&P500チャート</h5>
+                <div class="card border-light">
+                    <iframe valign="middle" margin="0px" marginheight="0" marginwidth="0" vspace="0" hspace="0"
+                        scrolling="NO"
+                        src="https://www.macrotrends.net/assets/php/chart_iframe_comp.php?id=2577&url=sp-500-pe-ratio-price-to-earnings-chart"
+                        frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-center">S&P500年次推移</h5>
+                <div class="card border-light">
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- S&P500 ここまで-->
+    
+    <!-- 借金は悪 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <h3 class="display-6 py-3 px-4 main-font text-center"
+                    style="margin-top: 100px; background-color: #1AB394; border-radius: 40px; color: white;">借金は悪</h3>
+            </div>
+            <div class="col-md-10 my-5">
+                <h3 class="display-6 py-3 px-4 main-font" style="margin-top: 100px;">借金はなぜ悪なのか？</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5 my-5 background-main">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <div>
+                    <div class="card-body">
+                        <div class="card-title"><h5 class="sub-font">購入したい物の値段 - Commodity Price</h5></div>
+                        <input type="number" id="commodityPrice" value=30000000 style="width: 70%;" onchange="changePymentList()">
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="card-body">
+                        <div class="card-title d-flex flex-row">
+                            <h5 class="sub-font">金利 - Interest Rate</h5><h5 class="mx-4"><span id="interestRate-value"></span>％</h5>
+                        </div>
+                        <input type="range" id="interestRate" min="0" max="0.3"
+                            step="0.001" value=0.1 style="width: 70%;" onchange="changeInterestRate()" onmousemove="cgangeRngeInputNum()">
+                    </div>
+                </div>
+                <div>
+                    <div class="card-body">
+                        <div class="card-title d-flex flex-row">
+                            <h5 class="sub-font">ローン年数 - Loan Term</h5><h5 class="mx-4"><span id="loanTerm-value"></span>年</h5>
+                        </div>
+                        <input type="range" id="loanTerm" min="1"
+                            max="50" step="1" value=35 style="width: 70%;" onchange="changeLoanMax()" onmousemove="cgangeRngeInputNum()">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card border-light">
+                    <canvas id="pieChart" height="400" width="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 借金は悪 ここまで-->
+
+    <!-- 自分で分析 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <h3 class="display-6 py-3 px-4 main-font text-center"
+                    style="margin-top: 100px; background-color: #1AB394; border-radius: 40px; color: white;">分析</h3>
+            </div>
+            <div class="col-md-10 my-5">
+                <h3 class="display-6 py-3 px-4 main-font" style="margin-top: 100px;">米国有名企業の株価を分析してみよう</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5 my-5 background-main">
+    </div>
+    <!-- 自分で分析 ここまで-->
+
+    <!-- FIRE -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <h3 class="display-6 py-3 px-4 main-font text-center"
+                    style="margin-top: 100px; background-color: #1AB394; border-radius: 40px; color: white;">出口</h3>
+            </div>
+            <div class="col-md-10 my-5">
+                <h3 class="display-6 py-3 px-4 main-font" style="margin-top: 100px;">経済的自由(FIRE)の旅</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5 my-5 background-main">
+        <div class="card my-5 border-light">
+            <h3 class="text-center py-4">年間支出　✖︎　25　＝　<span class="sub-font">リタイアするのに必要な金額</span></h3>
+        </div>
+        <h5 class="text-center">「25」という数字はどこから来たの！と思うかもしれないけど、背景には数学の計算式があるから<br>気にしなくても大丈夫だよ。</h5>
+        <div class="card my-5 border-light">
+            <h5 class="text-center py-4 px-3">この計算式は、<span class="sub-font">トリニティスタディ</span>と呼ばれる研究から来たもので、<br>ファイナンスを考える上ではアメリカではよく知られた研究だよ。<span class="sub-font">「4％ルール」</span>とも呼ばれている。</h5>
+            <h5 class="text-center py-4 px-3">でも、年間支出は人の生活レベルによって、その数字は様々だからその数字は自分で計算してみてね。<br>細かくきちんと計算するほど、正確な数字がわかるよ。</h5>
+        </div>
+        <div class="row py-5">
+            <div class="col-md-4 text-center">
+                <h5>年間支出</h5>
+                <input class="my-5" type="number" id="annualLoss" value=10000000 style="width: 70%;" onchange="changeRetireMoney()">
+            </div>
+            <div class="col-md-3 d-flex text-center align-items-end" style="width: 100%;">
+                <h5 class="my-5" style="width: 70%; margin: 0 auto;">✖︎　25　＝</h5>
+            </div>
+            <div class="col-md-5 text-center">
+                <h5>リタイアするのに必要な金額</h5>
+                <h5 class="sub-font my-5">¥<span id="retireMoney"></span></h5>
+            </div>
+        </div>
+    </div>
+    <!-- FIRE ここまで-->
+
+    <!-- jQuery 読み込み -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    
+    <!-- Chart.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    
+    <!-- Chartjs plugin labels -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script> -->
+
+    <!-- オリジナルJavaScript -->
+    <script type="text/javascript" src="./js/index.js"></script>
+
+    <p class="page-top"><i class="fas faa-wrench animated-hover fa-chevron-circle-up fa-3x"></i></p>
+    <script>
+        $('a[href^="#"]' + 'a:not(".carousel-control-prev,.carousel-control-next,.tab-nav,.nav-link")').click(function () {
+            var speed = 500;
+            var href = $(this).attr("href");
+            var target = $(href == "#" || href == "" ? 'html' : href);
+            var position = target.offset().top - 30;
+            $("html, body").animate({ scrollTop: position }, speed, "swing");
+            return false;
+        });
+    </script>
+    <!-- トップへ戻るボタン -->
+    <script>
+        $(function () {
+            var topBtn = $('.page-top');
+            topBtn.hide();
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    topBtn.fadeIn();
+                } else {
+                    topBtn.fadeOut();
+                }
+            });
+            topBtn.click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+</html>
